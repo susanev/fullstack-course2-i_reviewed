@@ -13,3 +13,12 @@ eloquent.notes.create! [
 	{ title: "Wow", note: "Great book to learn Ruby" },
 	{ title: "Funny", note: "Doesn't put you to sleep" }
 ]
+reviewers = Reviewer.create! [
+	{ name: "susan", password: "abc123" },
+	{ name: "tyler", password: "123abc" }
+]
+
+Book.all.each do |book|
+	book.reviewer = reviewers.sample
+	book.save!
+end
